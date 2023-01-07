@@ -46,6 +46,7 @@ For a more thorough guide for users new to configuring servers, please see [this
 - ``.prac`` launches practice mode and displays the ``.setup`` menu
 - ``.help``: displays this page
 - ``.settings``: opens the client settings menu
+- ``.exitprac``: exits practicemode
 
 ### Saving grenade positions
 - ``.nades [filter]``: displays a menu to select saved grenade positions. ``.nades`` with no argument shows all nades. ``filter`` can be any of: nade ids, category name, player name, or part of a grenade name
@@ -136,7 +137,7 @@ Note that this is not necessarily an exhaustive list; check ``cfg/sourcemod/prac
 
 - ``sm_practicemode_alphabetize_nades``: displays grenades in alphabetical order instead of id order
 - ``sm_practicemode_share_all_nades``: lets all users edit all nades, and hides who created them
-- ``sm_practicemode_autostart``: whether to automatically start practicemode
+- ``sm_practicemode_autostart``: whether to automatically start practicemode (NOTE: several users have reported FPS or crashing issues with this cvar, use with caution)
 - ``sm_practicemode_max_grenades_saved``: max # of grenades a user can save via ``.save``
 - ``sm_infinite_money``: whether to give infinite money
 - ``sm_allow_noclip``: whether the .noclip command is enabled

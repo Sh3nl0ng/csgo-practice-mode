@@ -307,6 +307,10 @@ public Action Command_CrouchBot(int client, int args) {
 }
 
 public Action Command_BotPlace(int client, int args) {
+  if (!g_InPracticeMode) {
+    return Plugin_Handled;
+  }
+
   // Based on Franc1sco's bot_spawner plugin:
   // https://github.com/Franc1sco/BotSpawner/blob/master/bot_spawner.sp
   int bot = CreateBot(client, false);
@@ -494,9 +498,8 @@ public Action Command_SaveBots(int client, int args) {
   // If there is an argument for this command, we load the bots from a specific file.
   if (args >= 1) {
     char filename[128];
-    for (int i = 1; i <= args; i++)
-    {
-        GetCmdArg(i, filename, sizeof(filename));
+    for (int i = 1; i <= args; i++) {
+      GetCmdArg(i, filename, sizeof(filename));
     }
     // Custom bot placements are in a subdirectory.
     BuildPath(Path_SM, path, sizeof(path), "data/practicemode/bots/%s/%s.cfg", mapName, filename);
@@ -557,9 +560,8 @@ public Action Command_LoadBots(int client, int args) {
   // If there is an argument for this command, we load the bots from a specific file.
   if (args >= 1) {
     char filename[128];
-    for (int i = 1; i <= args; i++)
-    {
-        GetCmdArg(i, filename, sizeof(filename));
+    for (int i = 1; i <= args; i++) {
+      GetCmdArg(i, filename, sizeof(filename));
     }
     // Custom bot placements are in a subdirectory.
     BuildPath(Path_SM, path, sizeof(path), "data/practicemode/bots/%s/%s.cfg", mapName, filename);
@@ -600,6 +602,10 @@ public Action Command_LoadBots(int client, int args) {
 }
 
 public Action Command_SwapBot(int client, int args) {
+  if (!g_InPracticeMode) {
+    return Plugin_Handled;
+  }
+
   int target = GetClientAimTarget(client, true);
   if (!IsPMBot(target)) {
     target = FindClosestBot(client);
